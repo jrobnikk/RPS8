@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="sl"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Šolski IS – prototip (HTML in CSS)</title>
+<link rel="stylesheet" href="css/style.css"></head><body>
+
+<header class="top"><b>Šolski IS</b>
+<nav class="nav na"><a href="#a-predmeti">Predmeti</a><a href="#a-ucitelji">Učitelji</a><a href="#a-ucenci">Učenci</a><a href="#a-dodelitve">Dodelitve</a></nav>
+<nav class="nav nt"><a href="#t-gradiva">Gradiva</a><a href="#t-oddaje">Oddane naloge</a></nav>
+<nav class="nav nu"><a href="#u-profil">Profil</a><a href="#u-predmeti">Moji predmeti</a><a href="#u-gradiva">Gradiva</a><a href="#u-oddaja">Oddaja nalog</a></nav>
+<span class="r"><a href="#dok">Dokumentacija</a> · <a href="#prijava">Prijava / odjava</a></span></header>
+
+<input type="checkbox" id="del" class="mc">
+<div class="modal"><label for="del" class="bd"></label><div class="card"><p><b>Res želite izbrisati zapis?</b></p><label for="del" class="b">Da, izbriši</label> <label for="del" class="b s">Prekliči</label></div></div>
+
+<main>
+<section class="pg" id="prijava"><div class="card"><h2>Prijava</h2>
+<form class="f v" action="#prijava"><input type="email" placeholder="E-pošta" aria-label="E-pošta"><input type="password" placeholder="Geslo" aria-label="Geslo"><span class="mut">V prototipu izberite vlogo spodaj.</span></form>
+<p class="mut">Hitra prijava (demo):</p><div class="f"><a class="b" href="#a-predmeti">Administrator</a><a class="b" href="#t-gradiva">Učitelj</a><a class="b" href="#u-predmeti">Učenec</a></div>
+<p><a href="#registracija">Nov učenec? Registracija</a></p></div></section>
+
+<section class="pg" id="registracija"><div class="card"><h2>Registracija (učenec)</h2>
+<form class="f v" action="#prijava"><input placeholder="Ime" aria-label="Ime" required><input placeholder="Priimek" aria-label="Priimek" required><input type="email" placeholder="E-pošta" aria-label="E-pošta" required><input type="password" minlength="8" placeholder="Geslo (najmanj 8 znakov)" aria-label="Geslo" required><button class="b">Registriraj</button></form>
+<p><a href="#prijava">Že imate račun? Prijava</a></p></div></section>
+
+<!-- ADMIN -->
+<section class="pg" id="a-predmeti"><h2>Predmeti</h2>
+<input type="checkbox" id="m-p" class="mc"><label for="m-p" class="b">+ Dodaj</label>
+<div class="modal"><label for="m-p" class="bd"></label><form class="card f v" action="#a-predmeti"><b>Predmet</b><input placeholder="Naziv" required aria-label="Naziv"><input placeholder="Opis" aria-label="Opis"><button class="b">Shrani</button><label for="m-p" class="b s">Prekliči</label></form></div>
+<div class="f"><input placeholder="Išči…" aria-label="Išči"><span class="mut">10 zapisov</span></div>
+<div class="card w"><table><tr><th>Naziv</th><th>Opis</th><th>Učitelji</th><th></th></tr>
+<tr><td>Slovenščina</td><td>Jezik in književnost</td><td>2</td><td><label for="m-p" class="b s">Uredi</label> <label for="del" class="b s">Izbriši</label></td></tr>
+<tr><td>Matematika</td><td>Algebra, geometrija</td><td>2</td><td><label for="m-p" class="b s">Uredi</label> <label for="del" class="b s">Izbriši</label></td></tr>
+<tr><td>Angleščina</td><td>Tuji jezik</td><td>2</td><td><label for="m-p" class="b s">Uredi</label> <label for="del" class="b s">Izbriši</label></td></tr>
+<tr><td>Fizika</td><td>Mehanika, elektrika</td><td>2</td><td><label for="m-p" class="b s">Uredi</label> <label for="del" class="b s">Izbriši</label></td></tr>
+<tr><td>Informatika</td><td>Programiranje, baze</td><td>2</td><td><label for="m-p" class="b s">Uredi</label> <label for="del" class="b s">Izbriši</label></td></tr></table></div></section>
+
+<section class="pg" id="a-ucitelji"><h2>Učitelji</h2>
+<input type="checkbox" id="m-t" class="mc"><label for="m-t" class="b">+ Dodaj</label>
+<div class="modal"><label for="m-t" class="bd"></label><form class="card f v" action="#a-ucitelji"><b>Učitelj</b><input placeholder="Ime" required aria-label="Ime"><input placeholder="Priimek" required aria-label="Priimek"><input type="email" placeholder="E-pošta" required aria-label="E-pošta"><input type="password" placeholder="Geslo (prazno = ne spremeni)" aria-label="Geslo"><button class="b">Shrani</button><label for="m-t" class="b s">Prekliči</label></form></div>
+<div class="f"><input placeholder="Išči…" aria-label="Išči"><span class="mut">20 zapisov</span></div>
+<div class="card w"><table><tr><th>Ime</th><th>Priimek</th><th>E-pošta</th><th></th></tr>
+<tr><td>Ana</td><td>Horvat</td><td>ucitelj1@sola.si</td><td><label for="m-t" class="b s">Uredi</label> <label for="del" class="b s">Izbriši</label></td></tr>
+<tr><td>Luka</td><td>Kovač</td><td>ucitelj2@sola.si</td><td><label for="m-t" class="b s">Uredi</label> <label for="del" class="b s">Izbriši</label></td></tr>
+<tr><td>Maja</td><td>Krajnc</td><td>ucitelj3@sola.si</td><td><label for="m-t" class="b s">Uredi</label> <label for="del" class="b s">Izbriši</label></td></tr>
+<tr><td>Jan</td><td>Zupan</td><td>ucitelj4@sola.si</td><td><label for="m-t" class="b s">Uredi</label> <label for="del" class="b s">Izbriši</label></td></tr></table></div></section>
+
+<section class="pg" id="a-ucenci"><h2>Učenci</h2>
+<input type="checkbox" id="m-u" class="mc"><label for="m-u" class="b">+ Dodaj</label>
+<div class="modal"><label for="m-u" class="bd"></label><form class="card f v" action="#a-ucenci"><b>Učenec</b><input placeholder="Ime" required aria-label="Ime"><input placeholder="Priimek" required aria-label="Priimek"><input type="email" placeholder="E-pošta" required aria-label="E-pošta"><input type="password" placeholder="Geslo (prazno = ne spremeni)" aria-label="Geslo"><button class="b">Shrani</button><label for="m-u" class="b s">Prekliči</label></form></div>
+<div class="f"><input placeholder="Išči…" aria-label="Išči"><span class="mut">100 zapisov</span></div>
+<div class="card w"><table><tr><th>Ime</th><th>Priimek</th><th>E-pošta</th><th>Predmeti</th><th></th></tr>
+<tr><td>Ana</td><td>Novak</td><td>ucenec1@sola.si</td><td>3</td><td><label for="m-u" class="b s">Uredi</label> <label for="del" class="b s">Izbriši</label></td></tr>
+<tr><td>Luka</td><td>Novak</td><td>ucenec2@sola.si</td><td>3</td><td><label for="m-u" class="b s">Uredi</label> <label for="del" class="b s">Izbriši</label></td></tr>
+<tr><td>Maja</td><td>Novak</td><td>ucenec3@sola.si</td><td>3</td><td><label for="m-u" class="b s">Uredi</label> <label for="del" class="b s">Izbriši</label></td></tr>
+<tr><td>Jan</td><td>Novak</td><td>ucenec4@sola.si</td><td>3</td><td><label for="m-u" class="b s">Uredi</label> <label for="del" class="b s">Izbriši</label></td></tr></table></div></section>
+
+<section class="pg" id="a-dodelitve"><h2>Dodelitve predmetov</h2>
+<div class="card"><form action="#a-dodelitve"><select aria-label="Oseba"><option>učitelj: Horvat Ana</option><option>učitelj: Kovač Luka</option><option>učenec: Novak Ana</option></select>
+<p><b>Predmeti:</b></p>
+<label class="c"><input type="checkbox" checked> Slovenščina</label><label class="c"><input type="checkbox"> Matematika</label><label class="c"><input type="checkbox" checked> Angleščina</label><label class="c"><input type="checkbox"> Fizika</label><label class="c"><input type="checkbox"> Informatika</label>
+<p class="mut">Predmet ima lahko več učiteljev, učitelj več predmetov, učenec mora imeti najmanj 2 predmeta.</p><button class="b">Shrani</button></form></div></section>
+
+<!-- UČITELJ -->
+<section class="pg" id="t-gradiva"><h2>Gradiva</h2>
+<select aria-label="Predmet"><option>Matematika</option><option>Fizika</option></select>
+<div class="card w"><table><tr><th>Naslov</th><th>Naloženo</th><th></th></tr>
+<tr><td>Vaje 1 – enačbe</td><td>20. 9. 2026</td><td><label for="del" class="b s">Izbriši</label></td></tr>
+<tr><td>Navodila za projekt</td><td>27. 9. 2026</td><td><label for="del" class="b s">Izbriši</label></td></tr>
+<tr><td>Formule</td><td>3. 10. 2026</td><td><label for="del" class="b s">Izbriši</label></td></tr></table></div>
+<div class="card"><b>Naloži novo gradivo</b><form class="f" action="#t-gradiva"><input placeholder="Naslov gradiva" required aria-label="Naslov"><input type="file" required aria-label="Datoteka"><button class="b">Naloži</button></form><span class="mut">Izbira predmetov je omejena na predmete, ki jih učitelj poučuje.</span></div></section>
+
+<section class="pg" id="t-oddaje"><h2>Oddane naloge</h2>
+<select aria-label="Predmet"><option>Matematika</option><option>Fizika</option></select>
+<div class="card w"><table><tr><th>Učenec</th><th>Naloga</th><th>Datum</th><th></th></tr>
+<tr><td>Novak Ana</td><td>Domača naloga 1</td><td>12. 10. 2026 14:05</td><td><a class="b s" href="#t-oddaje">Prenesi</a></td></tr>
+<tr><td>Novak Luka</td><td>Domača naloga 1</td><td>12. 10. 2026 16:40</td><td><a class="b s" href="#t-oddaje">Prenesi</a></td></tr>
+<tr><td>Novak Maja</td><td>Projekt</td><td>15. 10. 2026 09:12</td><td><a class="b s" href="#t-oddaje">Prenesi</a></td></tr></table></div></section>
+
+<!-- UČENEC -->
+<section class="pg" id="u-profil"><h2>Moj profil</h2><div class="card"><form class="f v" action="#u-profil"><input value="Ana" aria-label="Ime"><input value="Novak" aria-label="Priimek"><input type="email" value="ucenec1@sola.si" aria-label="E-pošta"><input type="password" placeholder="Novo geslo (prazno = ne spremeni)" aria-label="Geslo"><button class="b">Shrani</button></form></div></section>
+
+<section class="pg" id="u-predmeti"><h2>Moji predmeti</h2><p class="mut">Izberite vsaj 2 predmeta.</p>
+<div class="card"><form action="#u-predmeti"><label class="c"><input type="checkbox"> Slovenščina</label><label class="c"><input type="checkbox" checked> Matematika</label><label class="c"><input type="checkbox" checked> Angleščina</label><label class="c"><input type="checkbox"> Fizika</label><label class="c"><input type="checkbox" checked> Informatika</label><button class="b">Shrani</button></form></div></section>
+
+<section class="pg" id="u-gradiva"><h2>Gradiva</h2>
+<div class="card"><b>Matematika</b><ul><li>Vaje 1 – enačbe</li><li>Formule</li></ul></div>
+<div class="card"><b>Angleščina</b><ul><li>Seznam besedišča</li></ul></div>
+<div class="card"><b>Informatika</b><ul><li>Navodila za projekt</li><li>Primeri SQL</li></ul></div></section>
+
+<section class="pg" id="u-oddaja"><h2>Oddaja nalog</h2>
+<input type="checkbox" id="ow" class="mc">
+<div class="card"><div class="f"><select aria-label="Predmet"><option>Matematika</option><option>Angleščina</option><option>Informatika</option></select><input placeholder="Naslov naloge" aria-label="Naslov"><input type="file" aria-label="Datoteka"><label for="ow" class="b">Oddaj</label></div>
+<span class="mut">Datoteka se shrani kot „Priimek Ime – Naslov naloge.končnica“.</span></div>
+<div class="modal"><label for="ow" class="bd"></label><div class="card"><p class="msg">Naloga „Domača naloga 1“ je že oddana. Želite povoziti prejšnjo datoteko?</p><label for="ow" class="b">Da, povozi</label> <label for="ow" class="b s">Ne</label></div></div>
+<h3>Moje oddaje</h3><div class="card w"><table><tr><th>Predmet</th><th>Naloga</th><th>Shranjeno kot</th><th>Datum</th></tr>
+<tr><td>Matematika</td><td>Domača naloga 1</td><td>Novak Ana – Domača naloga 1.pdf</td><td>12. 10. 2026</td></tr>
+<tr><td>Informatika</td><td>Projekt</td><td>Novak Ana – Projekt.docx</td><td>15. 10. 2026</td></tr></table></div></section>
+
+<!-- DOKUMENTACIJA -->
+<section class="pg" id="dok"><h2>Dokumentacija</h2>
+<details open><summary>Namen in vloge</summary><p>Spletna aplikacija za podporo šolskemu delu na daljavo s tremi pogledi: <b>administrator</b> (predmeti, učitelji, učenci, dodelitve), <b>učitelj</b> (gradiva, oddane naloge) in <b>učenec</b> (profil, predmeti, gradiva, oddaja nalog). Vsak zaslon tega prototipa je hkrati skica (wireframe) pripadajočega pogleda.</p></details>
+<details><summary>Podatkovna baza (ER)</summary><div class="er">
+<div class="ent"><b>UPORABNIK</b><i>PK id</i><i>ime, priimek</i><i>UK email</i><i>geslo_hash</i><i>vloga</i></div>
+<div class="ent"><b>PREDMET</b><i>PK id</i><i>UK naziv</i><i>opis</i></div>
+<div class="ent"><b>UCITELJ_PREDMET</b><i>PK,FK uporabnik_id</i><i>PK,FK predmet_id</i></div>
+<div class="ent"><b>VPIS</b><i>PK,FK uporabnik_id</i><i>PK,FK predmet_id</i></div>
+<div class="ent"><b>GRADIVO</b><i>PK id</i><i>FK predmet_id, nalozil_id</i><i>naslov, pot_datoteke</i></div>
+<div class="ent"><b>ODDAJA</b><i>PK id</i><i>FK ucenec_id, predmet_id</i><i>naslov_naloge, pot_datoteke</i></div></div>
+<p class="mut">UPORABNIK 1:N UCITELJ_PREDMET, VPIS, GRADIVO, ODDAJA; PREDMET 1:N UCITELJ_PREDMET, VPIS, GRADIVO, ODDAJA.</p></details>
+<details><summary>Arhitektura</summary><div class="flow"><span>Brskalnik</span>→<span>Nginx (HTTPS)</span>→<span>Aplikacija</span>→<span>Podatkovna baza</span></div></details>
+<details><summary>Zahteve in varnost</summary><ul><li>Gesla zgoščena (bcrypt), nikoli v čistem besedilu.</li><li>Avtorizacija po vlogah; učitelj samo pri svojih predmetih.</li><li>Učenec obiskuje najmanj 2 predmeta.</li><li>Ponovna oddaja povozi datoteko šele po potrditvi učenca.</li><li>Odzivna postavitev: deluje od 360 px naprej.</li></ul></details>
+<details><summary>Skupina</summary><p>Jernej Robnik (vzdrževalec IS), Vid Strmčnik (razvijalec), Lan Plazar (razvijalec). Mentor: Andraž Pušnik.</p></details></section>
+</main>
+</body></html>
