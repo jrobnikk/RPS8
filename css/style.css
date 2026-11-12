@@ -665,6 +665,23 @@ form:not([data-spremenjeno="true"]) button[type="reset"] { display: none; }
 .obvestilo.odhaja { opacity: 0; transform: translateY(6px); transition: opacity .18s, transform .18s; }
 @keyframes obvestilo { from { opacity: 0; transform: translateY(10px); } }
 
+/* ---------- strežniška aplikacija (aplikacija/views) ---------- */
+
+.ikona-sonce { display: none; }
+:root[data-theme="dark"] .ikona-luna { display: none; }
+:root[data-theme="dark"] .ikona-sonce { display: inline; }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .ikona-luna { display: none; }
+  :root:not([data-theme="light"]) .ikona-sonce { display: inline; }
+}
+.dve-koloni > div { min-width: 0; }
+.potrditev, .obrazec-list { padding: 1.5rem; }
+.potrditev h1 { font-size: var(--t-xl); margin-bottom: 1rem; overflow-wrap: anywhere; }
+.potrditev .dialog-gumbi { margin-top: 1.25rem; }
+.gumb[aria-disabled="true"] { opacity: .45; pointer-events: none; }
+.obvestilo-opozorilo { box-shadow: inset 5px 0 0 var(--marker), var(--senca-dvignjeno); }
+.uporabnik-plosca form { margin: 0; }
+
 /* ---------- odzivnost ---------- */
 
 @media (max-width: 960px) {
