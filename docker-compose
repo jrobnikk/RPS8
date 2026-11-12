@@ -1,0 +1,67 @@
+# Šolski IS – zagon: docker compose up -d --build
+# Trije vsebniki v skupnem omrežju. Navzven sta odprti samo vrati 80 in 443 (Nginx).
+name: solski-is
+
+services:
+  baza:
+    image: mariadb:11.8
+    restart: unless-stopped
+    environment:
+      MARIADB_ROOT_PASSWORD: ${MARIADB_ROOT_PASSWORD:?Nastavite MARIADB_ROOT_PASSWORD v datoteki .env}
+      MARIADB_DATABASE: ${MARIADB_DATABASE:-sola_is}
+      MARIADB_USER: ${MARIADB_USER:-sola}
+      MARIADB_PASSWORD: ${MARIADB_PASSWORD:?Nastavite MARIADB_PASSWORD v datoteki .env}
+    volumes:
+      - baza:/var/lib/mysql
+      - ./baza:/docker-entrypoint-initdb.d:ro    # 01_shema.sql se izvede ob prvem zagonu
+    healthcheck:
+      test: ["CMD", "healthcheck.sh", "--connect", "--innodb_initialized"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 30s
+    networks: [notranje]
+
+  aplikacija:
+    build:
+      context: .
+      dockerfile: aplikacija/Dockerfile
+    restart: unless-stopped
+    init: true                                    # pravilno ustavljanje (SIGTERM)
+    environment:
+      NODE_ENV: production
+      DB_HOST: baza
+      DB_NAME: ${MARIADB_DATABASE:-sola_is}
+      DB_USER: ${MARIADB_USER:-sola}
+      DB_PASSWORD: ${MARIADB_PASSWORD}
+      SEJA_SKRIVNOST: ${SEJA_SKRIVNOST:?Nastavite SEJA_SKRIVNOST v datoteki .env}
+      ADMIN_GESLO: ${ADMIN_GESLO:?Nastavite ADMIN_GESLO v datoteki .env}
+      TESTNO_GESLO: ${TESTNO_GESLO:?Nastavite TESTNO_GESLO v datoteki .env}
+      DATOTEKE: /data/datoteke
+    volumes:
+      - datoteke:/data/datoteke                   # gradiva in oddaje, niso javno dostopne
+    depends_on:
+      baza:
+        condition: service_healthy
+    networks: [notranje]
+
+  nginx:
+    image: nginx:stable-alpine
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/conf.d/default.conf:ro
+      - ./nginx/certs:/etc/nginx/certs:ro
+      - ./nginx/certbot-www:/var/www/certbot:ro
+    depends_on:
+      - aplikacija
+    networks: [notranje]
+
+volumes:
+  baza:
+  datoteke:
+
+networks:
+  notranje:
