@@ -1,0 +1,14 @@
+# Docker gradi iz korena repozitorija; aplikacija potrebuje samo aplikacija/, css/style.css in js/email.js.
+.git
+.github
+.env
+backup
+docs
+nginx
+baza
+skripte
+**/node_modules
+aplikacija/datoteke
+index.html
+js/app.js
+js/podatki.js
