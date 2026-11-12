@@ -1,7 +1,15 @@
+# Skrivnosti – nikoli v Git
+.env
+
+# Potrdila, varnostne kopije, odvisnosti
+nginx/certs/*.pem
+nginx/letsencrypt/
+backup/
+node_modules/
+aplikacija/datoteke/
+
+# Lokalne skripte in sistemske datoteke
 objavi-na-github.bat
-<<<<<<< HEAD
-=======
 commiti.bat
->>>>>>> 4fe880b (Dodaj .gitignore)
 .DS_Store
 Thumbs.db
