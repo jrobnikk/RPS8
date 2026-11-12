@@ -1,0 +1,6 @@
+# Skripte in nastavitve morajo imeti konce vrstic LF, sicer jih bash in Docker na Linuxu ne preberejo.
+* text=auto eol=lf
+*.bat text eol=crlf
+*.docx binary
+*.png binary
+*.jpg binary
